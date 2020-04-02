@@ -44,3 +44,14 @@ class ApiKey():
         char_set = string.ascii_letters + string.punctuation
         urand = random.SystemRandom()
         return ''.join([urand.choice(char_set) for _ in range(self.ApiLengthC)])
+
+
+class LoginAuth():
+
+    def __init__(self):
+        return None
+    def getLogged(self, request):
+        
+        response_data = {}
+        
+        return JsonResponse(response_data, status = 200)
