@@ -3,7 +3,7 @@
 from .models import Movie,ApiUsers
 
 #IMPORT LIBRARIRES/FUNCTIONS
-#from django.shortcuts import render , HttpResponse
+from django.shortcuts import render , HttpResponse
 from django.http import JsonResponse
 import json
 from firstapp.customClasses import *
@@ -11,6 +11,30 @@ from firstapp.customClasses import *
 from django.contrib.auth.hashers import make_password, check_password
 
 #check_password(noHashPassword,HashedPassword) this funcion validate if the password match to the hash
+
+
+def home(request):
+
+    user_name = ""
+    try:
+        obj = ApiUsers.objects.get(user='kike')
+        user_name = obj.user 
+    except ApiUsers.DoesNotExist:
+        user_name = "No está el nombre we"
+
+    return render(request, 'dashboard.html', {'title': "usuario" , 'user_name':user_name})
+    # return render(request, 'dashboard.html')
+
+
+def products(request):
+	return render(request, 'products.html')
+
+def customer(request):
+	return render(request, 'customer.html')
+
+def todoList(request):
+	return render(request, 'list.html')
+
 
 def login(request):
 
